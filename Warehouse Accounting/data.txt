@@ -1,0 +1,1 @@
+{'balance': 81.0, 'warehouse': {'Apple': {'price': 5.0, 'quantity': 6}, 'Oranges': {'price': 10.0, 'quantity': 2}}, 'operations': ['Balance,add,100.0', 'Purchase,Apple,2.5,10,25.0', 'Purchase,Apple,5.0,2,10.0', 'Sale,Apple,6.0,6,36.0', 'Purchase,Oranges,10.0,2,20.0']}

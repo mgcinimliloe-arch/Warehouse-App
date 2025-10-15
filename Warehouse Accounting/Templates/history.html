@@ -31,10 +31,10 @@
         </thead>
         <tbody>
             {% if history %}
-                {% for i, line in enumerate(history) %}
+                {% for line in history %}
                     {% set parts = line.split(',') %}
                     <tr>
-                        <td>{{ i + 1 }}</td>
+                        <td>{{ loop.index }}</td>
                         <td>{{ parts[0] }}</td>
                         <td>{{ parts[1] if parts|length > 1 else '' }}</td>
                         <td>{{ parts[2] if parts|length > 2 else '' }}</td>
