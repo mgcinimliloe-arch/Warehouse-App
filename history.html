@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction History</title>
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <style>
+    .container { max-width: 900px; margin: 2rem auto; }
+    .history-table { margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Transaction History</h1>
+
+    <table class="table table-striped table-hover history-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Type</th>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="historyBody">
+        <!-- History rows will be populated here -->
+        <tr>
+          <td colspan="6" class="text-center">No history yet.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center">
+      <a href="index.html" class="btn btn-primary">Back to Main Page</a>
+    </div>
+  </div>
+</body>
+</html>
