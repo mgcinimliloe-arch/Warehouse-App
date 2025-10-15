@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>History - Accounting & Warehouse</title>
+    <!-- Spectre.css CDN for styling -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <style>
+        .container { max-width: 900px; margin: 40px auto; }
+        table { width: 100%; }
+        th, td { text-align: center; }
+        h1 { margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Operation History</h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Type</th>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if history %}
+                {% for i, line in enumerate(history) %}
+                    {% set parts = line.split(',') %}
+                    <tr>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ parts[0] }}</td>
+                        <td>{{ parts[1] if parts|length > 1 else '' }}</td>
+                        <td>{{ parts[2] if parts|length > 2 else '' }}</td>
+                        <td>{{ parts[3] if parts|length > 3 else '' }}</td>
+                        <td>{{ parts[4] if parts|length > 4 else '' }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6">No operations yet.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <p><a href="{{ url_for('index') }}" class="btn btn-link">Back to Main Page</a></p>
+</div>
+</body>
+</html>
