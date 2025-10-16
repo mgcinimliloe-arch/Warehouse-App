@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Accounting & Warehouse App</title>
+    <!-- Spectre.css CDN for styling -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <style>
+        .container { max-width: 800px; margin: 40px auto; }
+        .error-message { color: red; font-weight: bold; }
+        h2 { margin-top: 30px; }
+        .form-section { margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Accounting & Warehouse System</h1>
+
+    <!-- Display Stock and Balance -->
+    <div class="columns">
+        <div class="column col-6">
+            <h3>Stock Level: {{ stock_level }}</h3>
+        </div>
+        <div class="column col-6">
+            <h3>Account Balance: ${{ account_balance }}</h3>
+        </div>
+    </div>
+
+    <!-- Error message -->
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% endif %}
+
+    <!-- Purchase Form -->
+    <div class="form-section">
+        <h2>Purchase Product</h2>
+        <form method="POST">
+            <input type="hidden" name="form_type" value="purchase">
+            <div class="form-group">
+                <label>Product Name</label>
+                <input class="form-input" type="text" name="purchaseName" required>
+            </div>
+            <div class="form-group">
+                <label>Unit Price</label>
+                <input class="form-input" type="number" step="0.01" name="purchasePrice" required>
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input class="form-input" type="number" name="purchaseQuantity" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit Purchase</button>
+        </form>
+    </div>
+
+    <!-- Sale Form -->
+    <div class="form-section">
+        <h2>Sell Product</h2>
+        <form method="POST">
+            <input type="hidden" name="form_type" value="sale">
+            <div class="form-group">
+                <label>Product Name</label>
+                <input class="form-input" type="text" name="saleName" required>
+            </div>
+            <div class="form-group">
+                <label>Unit Price</label>
+                <input class="form-input" type="number" step="0.01" name="salePrice" required>
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input class="form-input" type="number" name="saleQuantity" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit Sale</button>
+        </form>
+    </div>
+
+    <!-- Balance Change Form -->
+    <div class="form-section">
+        <h2>Change Account Balance</h2>
+        <form method="POST">
+            <input type="hidden" name="form_type" value="balance">
+            <div class="form-group">
+                <label>Operation</label>
+                <select class="form-select" name="operationType" required>
+                    <option value="add">Add</option>
+                    <option value="subtract">Subtract</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Amount</label>
+                <input class="form-input" type="number" step="0.01" name="balanceAmount" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Link to History -->
+    <p><a href="{{ url_for('history') }}" class="btn btn-link">View History</a></p>
+</div>
+</body>
+</html>

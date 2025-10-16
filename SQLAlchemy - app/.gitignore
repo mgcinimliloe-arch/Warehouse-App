@@ -1,0 +1,10 @@
+# Ignore SQLite database file
+warehouse.db
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Optional: virtual environment
+venv/
+.venv/

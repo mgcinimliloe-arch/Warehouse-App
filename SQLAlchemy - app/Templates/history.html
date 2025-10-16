@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+</head>
+<body>
+<div class="container grid-lg">
+    <h1 class="text-center">Transaction History</h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for txn in history %}
+            <tr>
+                <td>{{ txn.id }}</td>
+                <td>{{ txn.type }}</td>
+                <td>{{ txn.product_name or '' }}</td>
+                <td>{{ txn.price if txn.price is not none else '' }}</td>
+                <td>{{ txn.quantity if txn.quantity is not none else '' }}</td>
+                <td>{{ txn.total if txn.total is not none else '' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="columns">
+        <div class="column col-6 text-left">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Main</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
